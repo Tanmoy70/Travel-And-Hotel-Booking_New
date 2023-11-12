@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;700;900&display=swap");
+
+:root {
+  --primaryColor: hsl(14, 90%, 53%);
+  --primaryColorlight: hsl(14, 96%, 91%);
+  --bgColor: hsl(0, 0%, 100%);
+  --formColor: hsl(20, 42%, 87%);
+  --whiteColor: hsl(0, 0%, 100%);
+  --blackColor: hsl(0, 0%, 18%);
+  --greyText: hsl(0, 0%, 51%);
+  --inputColor: hsl(330, 12%, 97%);
+  --cardColor: hsl(300, 3%, 94%);
+
+  --biggestFontSize: 2.5rem;
+  --h1FontSize: 2rem;
+  --h2FontSize: 1.25rem;
+  --h3FontSize: 1rem;
+  --normalFontSize: 0.938rem;
+  --smallFontSize: 0.813rem;
+  --smallestFontSize: 0.75rem;
+  --borderRedius: 3rem;
+}
+
+.navbar {
+  height: 50px;
+  background-color: var(--primaryColorlight);
+  display: flex;
+  justify-content: center;
+}
+
+.navContainer {
+  width: 100%;
+  max-width: 1018px;
+  color: var(--greyText);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 35px 0px;
+  font-size: var(--h2FontSize);
+}
+
+.logoDiv2 {
+  margin: 20px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  cursor: pointer;
+
+  .icon2 {
+    font-size: var(--h1FontSize);
+  }
+}
+
+.LogoText {
+  color: black;
+}
+
+.first {
+  margin-right: 5px;
+  font-size: 14px;
+  background-color: white;
+  color: var(--primaryColor);
+  border: 0.5px solid var(--primaryColor);
+}

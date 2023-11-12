@@ -1,0 +1,123 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;700;900&display=swap");
+
+// All projects color
+
+:root {
+  --primaryColor: hsl(14, 90%, 53%);
+  --primaryColorlight: hsl(14, 96%, 91%);
+  --bgColor: hsl(0, 0%, 100%);
+  --formColor: hsl(20, 42%, 87%);
+  --whiteColor: hsl(0, 0%, 100%);
+  --blackColor: hsl(0, 0%, 18%);
+  --greyText: hsl(0, 0%, 51%);
+  --inputColor: hsl(330, 12%, 97%);
+  --cardColor: hsl(300, 3%, 94%);
+
+  // Fort tag Typography
+
+  --biggestFontSize: 2.5rem;
+  --h1FontSize: 2rem;
+  --h2FontSize: 1.25rem;
+  --h3FontSize: 1rem;
+  --normalFontSize: 0.938rem;
+  --smallFontSize: 0.813rem;
+  --smallestFontSize: 0.75rem;
+  --borderRedius: 3rem;
+}
+
+.listContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+
+  .listWrapper {
+    width: 100%;
+    max-width: 1024px;
+    display: flex;
+    gap: 20px;
+
+    .listSearch {
+      flex: 1;
+      background-color: #febb02;
+      padding: 10px;
+      border-radius: 10px;
+      position: sticky;
+      top: 10px;
+      height: max-content;
+
+      .lsTitle {
+        font-size: 20px;
+        color: #555;
+        margin-bottom: 10px;
+      }
+
+      .lsItem {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        margin-bottom: 10px;
+
+        & > label {
+          font-size: 12px;
+        }
+
+        & > input {
+          height: 30px;
+          border: none;
+          padding: 5px;
+          outline: none;
+        }
+        & > span {
+          height: 30px;
+          padding: 5px;
+          background-color: white;
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+        }
+      }
+
+      .lsOption {
+        padding: 10px;
+        .lsOptionItem {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 10px;
+          color: #555;
+          font-size: 12px;
+
+          .inOptionInput {
+            width: 60px;
+          }
+          & > input {
+            padding-left: 3px;
+            outline: none;
+          }
+        }
+      }
+      & > button {
+        width: 100%;
+        cursor: pointer;
+        font-weight: 500;
+
+        &:hover {
+          border: 0.5px solid var(--primaryColor);
+        }
+      }
+      .listBtn {
+        padding: 10px;
+        background-color: #0071c2;
+        color: white;
+        border: none;
+        width: 100%;
+        font-weight: 500;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+    }
+
+    .listResult {
+      flex: 3;
+    }
+  }
+}

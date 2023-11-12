@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;700;900&display=swap");
+
+:root {
+  --primaryColor: hsl(14, 90%, 53%);
+  --primaryColorlight: hsl(14, 96%, 91%);
+  --bgColor: hsl(0, 0%, 100%);
+  --formColor: hsl(20, 42%, 87%);
+  --whiteColor: hsl(0, 0%, 100%);
+  --blackColor: hsl(0, 0%, 18%);
+  --greyText: hsl(0, 0%, 51%);
+  --inputColor: hsl(330, 12%, 97%);
+  --cardColor: hsl(300, 3%, 94%);
+
+  --biggestFontSize: 2.5rem;
+  --h1FontSize: 2rem;
+  --h2FontSize: 1.25rem;
+  --h3FontSize: 1rem;
+  --normalFontSize: 0.938rem;
+  --smallFontSize: 0.813rem;
+  --smallestFontSize: 0.75rem;
+  --borderRedius: 3rem;
+}
+
+.header {
+  background-color: var(--primaryColorlight);
+  color: var(--greyText);
+  display: flex;
+  justify-content: center;
+  border-bottom: 1.5px solid rgb(211, 211, 211);
+  .headerContainer {
+    width: 100%;
+    max-width: 1024px;
+    margin: 20px 0px 0px 0px;
+
+    .headerList {
+      display: flex;
+      gap: 40px;
+      margin-bottom: 25px;
+
+      .secMenu {
+        display: block;
+        .flex {
+          width: 100%;
+          margin: 0.5rem 0 0 0;
+          justify-content: center;
+          gap: 1.5rem;
+
+          .HeaderIcon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 30px;
+            padding: 2px 0px 2px 10px;
+            background-color: white;
+
+            cursor: pointer;
+
+            &.active {
+              color: var(--primaryColor);
+              border: 1.5px dashed var(--primaryColor);
+            }
+            &:hover {
+              color: var(--primaryColor);
+              border: 1.5px dashed var(--primaryColor);
+
+              li {
+                color: var(--primaryColor);
+              }
+            }
+          }
+
+          li {
+            background: transparent;
+            padding: 10px 10px;
+            border-radius: var(--borderRedius);
+            color: var(--blackColor);
+            border: 1.5px dashed transparent;
+            cursor: pointer;
+          }
+
+          .activeLi {
+            color: var(--primaryColor);
+          }
+        }
+      }
+    }
+  }
+}
