@@ -24,7 +24,7 @@ const Featured = () => {
         <>
           <div className="featuredItem">
             <img
-              src="https://cf.bstatic.com/xdata/images/city/max500/957801.webp?k=a969e39bcd40cdcc21786ba92826063e3cb09bf307bcfeac2aa392b838e9b7a5&o="
+              src="https://blog.norwegianreward.com/wp-content/uploads/2017/12/Norwegian_Reward_Berlin_Brandenburg_iStock_940x450.jpg"
               alt=""
               className="featuredImg"
               data-aos="fade-down"
@@ -37,7 +37,7 @@ const Featured = () => {
 
           <div className="featuredItem">
             <img
-              src="https://cf.bstatic.com/xdata/images/city/max500/690334.webp?k=b99df435f06a15a1568ddd5f55d239507c0156985577681ab91274f917af6dbb&o="
+              src="https://images.ctfassets.net/zmjc9gr9hbbf/1wm11PSR5i6W9iqxhOnTM5/e63f112b19e0adfed25d2a4b9212f060/MAD32860.jpg?w=1980"
               alt=""
               className="featuredImg"
               data-aos="fade-down"
@@ -49,7 +49,7 @@ const Featured = () => {
           </div>
           <div className="featuredItem">
             <img
-              src="https://cf.bstatic.com/xdata/images/city/max500/689422.webp?k=2595c93e7e067b9ba95f90713f80ba6e5fa88a66e6e55600bd27a5128808fdf2&o="
+              src="https://media.tacdn.com/media/attractions-splice-spp-674x446/09/93/6a/89.jpg"
               alt="This is an image"
               className="featuredImg"
               data-aos="fade-down"

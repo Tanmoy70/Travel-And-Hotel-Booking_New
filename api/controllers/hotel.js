@@ -1,5 +1,8 @@
 import Hotel from "../models/Hotel.js";
+import ImageModel from "../models/Image.js";
 import Room from "../models/Room.js";
+import fs from "fs";
+import path from "path";
 
 //CreateHotels
 
@@ -57,12 +60,44 @@ export const getHotel = async (req, res, next) => {
 export const getHotels = async (req, res, next) => {
   const { minPrice, maxPrice, ...others } = req.query;
   try {
-    const hotels = await Hotel.find({
+    const rawHotelData = await Hotel.find({
       ...others,
-      cheapestPrice: { $gt: minPrice | 1, $lt: maxPrice || 999 },
+      cheapestPrice: { $gte: minPrice | 1, $lte: maxPrice || 999 },
     }).limit(req.query.limit);
-    res.status(200).json(hotels);
+
+    const dataTobeSend = [];
+    const uploadFolder = path.join(process.cwd(), "uploads");
+
+    for (let i = 0; i < rawHotelData.length; i++) {
+      const photos = [];
+
+      for (let j = 0; j < rawHotelData[i].photos.length; j++) {
+        console.log(rawHotelData[i].photos[j]);
+        photos.push(
+          fs.readFileSync(path.join(uploadFolder, rawHotelData[i].photos[j]))
+        );
+      }
+
+      dataTobeSend.push({
+        name: rawHotelData[i].name,
+        type: rawHotelData[i].type,
+        city: rawHotelData[i].city,
+        address: rawHotelData[i].address,
+        distance: rawHotelData[i].distance,
+        photos,
+        title: rawHotelData[i].title,
+        desc: rawHotelData[i].desc,
+        rating: rawHotelData[i].rating,
+        rooms: rawHotelData[i].rooms,
+        cheapestPrice: rawHotelData[i].cheapestPrice,
+        featured: rawHotelData[i].featured,
+      });
+    }
+
+    console.log(dataTobeSend);
+    res.status(200).send(dataTobeSend);
   } catch (err) {
+    console.log(err);
     next(err);
   }
 };
@@ -71,8 +106,6 @@ export const getHotels = async (req, res, next) => {
 
 export const countByCity = async (req, res, next) => {
   const cities = req.query.cities.split(",");
-  // console.log("BigCitiesControlers");
-  // console.log(req.query);
   try {
     const list = await Promise.all(
       cities.map((city) => {

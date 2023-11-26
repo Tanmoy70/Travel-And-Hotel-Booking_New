@@ -122,9 +122,9 @@ export default function List() {
               "Loading"
             ) : (
               <>
-                {data.map((item) => (
-                  <SearchItem item={item} key={item._id} />
-                ))}
+                {data.map((item, index) => {
+                  return <SearchItem item={item} key={index} />;
+                })}
               </>
             )}
           </div>

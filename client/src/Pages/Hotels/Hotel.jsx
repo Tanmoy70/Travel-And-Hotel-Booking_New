@@ -60,9 +60,9 @@ export default function Hotel() {
     setSlideNumber(newSlideNo);
   };
 
-  const { data, loading, error } = useFetch(`/api/hotels/find/${id}`);
+  const { data, loading } = useFetch(`/api/hotels/find/${id}`);
 
-  const { dates, options } = useContext(SearchContext);
+  const { dates, option } = useContext(SearchContext);
 
   const { user } = useContext(AuthContext);
 
@@ -118,7 +118,9 @@ export default function Hotel() {
                 />
               </div>
             )}
-            <button className="bookNow">Reserve or Book Now!</button>
+            <button className="bookNow" onClick={handleClick}>
+              Reserve or Book Now!
+            </button>
             <h1 className="hotelTitle">{data.name}</h1>
             <div className="hotelAddress">
               <FontAwesomeIcon icon={faLocationDot} />
@@ -133,11 +135,11 @@ export default function Hotel() {
             </span>
             <div className="hotelImages">
               {data.photos?.map((photo, i) => (
-                <div className="hotelImgWrapper">
+                <div className="hotelImgWrapper" key={i}>
                   <img
-                    src={photo}
-                    alt="This is image"
                     onClick={() => handleOpen(i)}
+                    src={photo}
+                    alt="This is an image"
                     className="hotelImg"
                   />
                 </div>
@@ -155,17 +157,18 @@ export default function Hotel() {
                   excellent location score of 9.8!
                 </span>
                 <h2>
-                  <b>${days * data.cheapestPrice}</b>({days} nights)
-                </h2>{" "}
-                {/*Problem need to solve at last */}
+                  <b>${days * data.cheapestPrice * option.room}</b>({days}{" "}
+                  nights)
+                </h2>
+
                 <button onClick={handleClick}>Reserve or Book Now!</button>
               </div>
             </div>
           </div>
         </div>
       )}
-      {openModel && <Reserve setOpen={setOpenModel} hotelId={id} />}
       <Footer />
+      {openModel && <Reserve setOpen={setOpenModel} hotelId={id} />}
     </div>
   );
 }

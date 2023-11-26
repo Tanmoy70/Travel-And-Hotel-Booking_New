@@ -2,7 +2,7 @@ import Hotel from "../models/Hotel.js";
 import Room from "../models/Room.js";
 import { createError } from "../utils/error.js";
 
-// CreateRoom
+// createRoom
 export const createRoom = async (req, res, next) => {
   const hotelId = req.params.hotelid;
   const newRoom = new Room(req.body);
@@ -22,6 +22,7 @@ export const createRoom = async (req, res, next) => {
   }
 };
 
+// updateRoom
 export const updateRoom = async (req, res, next) => {
   try {
     const updatedRoom = await Room.findByIdAndUpdate(
@@ -34,21 +35,27 @@ export const updateRoom = async (req, res, next) => {
     next(err);
   }
 };
-// export const updateRoomAvailability = async (req, res, next) => {
-//   try {
-//     await Room.updateOne(
-//       { "roomNumbers._id": req.params.id },
-//       {
-//         $push: {
-//           "roomNumbers.$.unavailableDates": req.body.dates,
-//         },
-//       }
-//     );
-//     res.status(200).json("Room status has been updated.");
-//   } catch (err) {
-//     next(err);
-//   }
-// };
+
+// availableRoom
+
+export const updateRoomAvailability = async (req, res, next) => {
+  try {
+    await Room.updateOne(
+      { "roomNumbers._id": req.params.id },
+      {
+        $push: {
+          "roomNumbers.$.unavailableDates": req.body.dates, //if update nested properties then you need to do like that
+        },
+      }
+    );
+    res.status(200).json("Room status has been updated.");
+  } catch (err) {
+    next(err);
+  }
+};
+
+//deleteRoom
+
 export const deleteRoom = async (req, res, next) => {
   const hotelId = req.params.hotelid;
   try {
@@ -65,6 +72,9 @@ export const deleteRoom = async (req, res, next) => {
     next(err);
   }
 };
+
+//FindSingleRoom
+
 export const getRoom = async (req, res, next) => {
   try {
     const room = await Room.findById(req.params.id);
@@ -73,6 +83,8 @@ export const getRoom = async (req, res, next) => {
     next(err);
   }
 };
+
+//FindAllRooms
 
 export const getAllRoom = async (req, res, next) => {
   try {

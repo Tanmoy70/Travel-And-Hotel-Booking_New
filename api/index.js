@@ -5,6 +5,7 @@ import authRoute from "./routes/auth.js";
 import usersRoute from "./routes/users.js";
 import roomsRoute from "./routes/rooms.js";
 import hotelsRoute from "./routes/hotels.js";
+import imagesRoute from "./routes/images.js";
 import cookieParser from "cookie-parser";
 
 const app = express();
@@ -26,6 +27,8 @@ const connect = async () => {
   }
 };
 
+//Storage for Multer
+
 // mongoose.connection.on("disconnection", () => {
 //   console.log("mongoDB disconnected!");
 // });
@@ -41,6 +44,7 @@ app.use("/api/auth", authRoute);
 app.use("/api/users", usersRoute);
 app.use("/api/hotels", hotelsRoute);
 app.use("/api/rooms", roomsRoute);
+app.use("/api/images", imagesRoute);
 
 app.use((err, req, res, next) => {
   const errorStatus = err.status || 500;

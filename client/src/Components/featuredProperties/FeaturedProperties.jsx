@@ -12,7 +12,7 @@ export default function FeaturedProperties() {
     Aos.init({ duration: 2000 });
   }, []);
 
-  const { data, loading, error } = useFetch("/api/hotels/");
+  const { data, loading, error } = useFetch("/api/hotels?featured=true");
 
   return (
     <div className="fpContainer">
@@ -20,32 +20,49 @@ export default function FeaturedProperties() {
         Homes guests love
       </h1>
       <div className="fp">
-        {loading ? (
-          "Loading"
-        ) : (
-          <>
-            {data.map((item) => (
-              <div className="fpItem" data-aos="fade-up" key={item._id}>
-                <img
-                  src={item.photos[0]}
-                  alt="This is an image"
-                  className="fpImg"
-                />
-                <span className="fpName">{item.name}</span>
-                <span className="fpCity">{item.city}</span>
-                <span className="fpPrice">
-                  Starting from ${item.cheapestPrice}{" "}
-                </span>
-                {item.rating && (
-                  <div className="fpRating">
-                    <button>{item.rating}</button>
-                    <span>Excellent</span>
-                  </div>
-                )}
-              </div>
-            ))}
-          </>
-        )}
+        <div className="fpItem" data-aos="fade-up">
+          <img
+            src="https://d8a6qj9sir70y.cloudfront.net/media/glmhhpg5/acl-rm-deluxe-with-balcony-bed-dsc_0581.jpg?mode=crop&width=768&height=511"
+            alt="This is an image"
+            className="fpImg"
+          />
+          <span className="fpName">Aparthotel Start Miasto</span>
+          <span className="fpCity">London</span>
+          <span className="fpPrice">Starting from $150</span>
+          <div className="fpRating">
+            <button>8.9</button>
+            <span>Awasome</span>
+          </div>
+        </div>
+        <div className="fpItem" data-aos="fade-up">
+          <img
+            src="https://media.timeout.com/images/103677712/750/422/image.jpg"
+            alt="This is an image"
+            className="fpImg"
+            data-aos="fade-down"
+          />
+          <span className="fpName">Avani Alonso Martinez Madrid Hotel</span>
+          <span className="fpCity">Madrid</span>
+          <span className="fpPrice">Starting from $142</span>
+          <div className="fpRating">
+            <button>9.1</button>
+            <span>Excellent</span>
+          </div>
+        </div>
+        <div className="fpItem" data-aos="fade-up">
+          <img
+            src="https://media.cntraveler.com/photos/5be1c837d1f6b12d39556ba7/16:9/w_3999,h_2249,c_limit/The-Goring-Hotel__2018_Most-SplendidGarden_-047-V2-HIGH-RES.jpg"
+            alt="This is an image"
+            className="fpImg"
+          />
+          <span className="fpName">NH Berlin Alexanderplatz</span>
+          <span className="fpCity">Berlin</span>
+          <span className="fpPrice">Starting from $130</span>
+          <div className="fpRating">
+            <button className="RatingNumber">9.4</button>
+            <span>Excellent</span>
+          </div>
+        </div>
       </div>
     </div>
   );

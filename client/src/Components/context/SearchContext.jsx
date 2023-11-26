@@ -3,7 +3,7 @@ import { createContext, useReducer } from "react";
 const INITIAL_STATE = {
   city: undefined,
   dates: [],
-  options: {
+  option: {
     adult: undefined,
     children: undefined,
     room: undefined,
@@ -31,7 +31,7 @@ export const SearchContextProvider = ({ children }) => {
       value={{
         city: state.city,
         dates: state.dates,
-        options: state.options,
+        option: state.option,
         dispatch,
       }}
     >

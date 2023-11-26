@@ -15,10 +15,10 @@ const PropertyList = () => {
   const { data, loading, error } = useFetch("/api/hotels/countByType");
 
   const images = [
-    "https://cf.bstatic.com/xdata/images/xphoto/square300/57584488.webp?k=bf724e4e9b9b75480bbe7fc675460a089ba6414fe4693b83ea3fdd8e938832a6&o=",
-    "https://cf.bstatic.com/static/img/theme-index/carousel_320x240/card-image-apartments_300/9f60235dc09a3ac3f0a93adbc901c61ecd1ce72e.jpg",
-    "https://cf.bstatic.com/static/img/theme-index/carousel_320x240/bg_resorts/6f87c6143fbd51a0bb5d15ca3b9cf84211ab0884.jpg",
-    "https://cf.bstatic.com/xdata/images/xphoto/square300/57584488.webp?k=bf724e4e9b9b75480bbe7fc675460a089ba6414fe4693b83ea3fdd8e938832a6&o=",
+    "https://media.cntraveller.com/photos/629f1658f78438ff9ee3a25c/4:3/w_1780,h_1335,c_limit/The%20Landmark-london-june22-pr-global.jpeg",
+    "https://www.marylebonesquare.com/static/3-20c27cd3c3cdda48c828cfa2a6137e6d.jpg",
+    "https://ohiosamishcountry.com/images/businesses/berlin-resort/New-Suite-2015b.jpg",
+    "https://b8architecture.com/dev/wp-content/uploads/2022/02/b8-architecture-modern-luxury-villa-venus-dubai-marbella-madrid-cover.jpg",
     "https://cf.bstatic.com/static/img/theme-index/carousel_320x240/card-image-chalet_300/8ee014fcc493cb3334e25893a1dee8c6d36ed0ba.jpg",
   ];
 

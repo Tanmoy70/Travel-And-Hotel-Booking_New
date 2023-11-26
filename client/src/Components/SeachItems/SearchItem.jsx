@@ -2,10 +2,15 @@ import { Link } from "react-router-dom";
 import "./Seachitem.scss";
 
 export default function SearchItem({ item }) {
+  const photoData = item.photos[0];
+  const unit8Data = new Uint8Array(photoData?.data);
+  const unit8Array = new Uint8Array(unit8Data);
+  const profilePhotoLink = URL.createObjectURL(new Blob([unit8Array]));
+
   return (
     <div>
       <div className="searchItem">
-        <img src={item.photos[0]} alt="This is an image" className="siImg" />
+        <img src={profilePhotoLink} alt="This is an image" className="siImg" />
         <div className="siDesc">
           <h1 className="siTitle">{item.name}</h1>
           <span className="siDistance">{item.distance}m from center</span>

@@ -7,6 +7,7 @@ import { BiLogoVk } from "react-icons/bi";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { PiDotsNineBold } from "react-icons/pi";
 import { AuthContext } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 // import { BiLogoKickstarter } from "react-icons/bi";
 
@@ -27,7 +28,19 @@ export default function Navbar() {
     setNavBar("menu");
   };
 
-  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const { user, error, dispatch } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    dispatch({ type: "LOGOUT" });
+  };
+
+  const handleLogin = () => {
+    if (!user) {
+      navigate("/login");
+    }
+  };
 
   return (
     <div className="navBar">
@@ -48,11 +61,20 @@ export default function Navbar() {
       </div>
 
       {user ? (
-        user.username
+        <div className="userLogin">
+          <span style={{ padding: "0 10px 0 0 " }}>{user.username}</span>
+          <button className="btn first" onClick={handleLogOut}>
+            Logout
+          </button>
+        </div>
       ) : (
         <div className="NavbarBtn">
-          <button className="signUpBtn btn first">Log In</button>
-          <button className="signUpBtn btn">Sign Up</button>
+          <button className="btn first" onClick={handleLogin}>
+            Log In
+          </button>
+          <button className="btn" onClick={handleLogin}>
+            Sign up
+          </button>
         </div>
       )}
 
