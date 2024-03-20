@@ -24,7 +24,7 @@ export default function Reviews() {
   }, []);
 
   return (
-    <div className="review section container">
+    <div className="review section container" id="reviews">
       <div className="secConatiner grid">
         <div className="textDiv">
           <span className="redText" data-aos="fade-up">

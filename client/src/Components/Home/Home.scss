@@ -62,11 +62,21 @@
       font-weight: 500;
     }
 
-    .btn {
+    .btnNormal {
       gap: 0.5rem;
-      padding-left: 2rem;
-      padding-right: 2rem;
+      padding-inline: 0;
+      padding-block: 0.9rem;
+      display: flex;
+      flex-direction: row;
       font-size: var(--h3FontSize);
+      a {
+        color: var(--whiteColor);
+      }
+      &:hover {
+        a {
+          color: var(--primaryColor);
+        }
+      }
     }
   }
   .popularPlaces {
@@ -96,7 +106,7 @@
         margin: auto;
       }
 
-      .btn {
+      .btnNormal {
         font-size: var(--h3FontSize);
         margin: auto;
       }
@@ -120,7 +130,7 @@
         margin: auto;
       }
 
-      .btn {
+      .btnNormal {
         gap: 0.5rem;
         padding-right: 2rem;
         padding-left: 2rem;

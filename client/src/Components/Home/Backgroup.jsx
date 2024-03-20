@@ -35,8 +35,11 @@ export default function Backgroup() {
           Discover the world's most adventurous nature, life is so short for a
           trip.
         </p>
-        <button className="btn" data-aos="fade-up">
-          GET STARTED <AiOutlineSwapRight className="icon" />
+        <button className="btnNormal" data-aos="fade-up">
+          <a href="#destination" className="LinkLoc">
+            GET STARTED
+          </a>{" "}
+          <AiOutlineSwapRight className="icon" />
         </button>
       </div>
 

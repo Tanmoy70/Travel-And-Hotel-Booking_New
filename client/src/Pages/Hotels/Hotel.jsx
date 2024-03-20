@@ -1,5 +1,5 @@
 import useFetch from "../../hooks/usefetch";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Header from "../../Components/Header/Header";
 import Navbar from "../../Components/NavBarSecond/NavBarSecond";
@@ -21,6 +21,7 @@ export default function Hotel() {
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
   const [openModel, setOpenModel] = useState(false);
+  const [sliderImg, setSliderImg] = useState("");
   const locationHook = useLocation();
   const id = locationHook.pathname.split("/")[2];
 
@@ -45,7 +46,14 @@ export default function Hotel() {
   //   },
   // ];
 
-  const handleOpen = (i) => {
+  const photoDatatToLink = (photoData) => {
+    return URL.createObjectURL(
+      new Blob([new Uint8Array(new Uint8Array(photoData))])
+    );
+  };
+
+  const handleOpen = (i, photo) => {
+    setSliderImg(photoDatatToLink(photo.data));
     setSlideNumber(i);
     setOpen(true);
   };
@@ -53,11 +61,12 @@ export default function Hotel() {
   const handleMove = (direction) => {
     let newSlideNo;
     if (direction === "l") {
-      newSlideNo = slideNumber === 0 ? 5 : slideNumber - 1;
+      newSlideNo = slideNumber === 0 ? data.photos.length - 1 : slideNumber - 1;
     } else {
-      newSlideNo = slideNumber === 5 ? 0 : slideNumber + 1;
+      newSlideNo = slideNumber === data.photos.length - 1 ? 0 : slideNumber + 1;
     }
     setSlideNumber(newSlideNo);
+    setSliderImg(photoDatatToLink(data.photos[newSlideNo].data));
   };
 
   const { data, loading } = useFetch(`/api/hotels/find/${id}`);
@@ -108,7 +117,7 @@ export default function Hotel() {
                 />
 
                 <div className="sliderWrapper">
-                  <img src={data.photos[slideNumber]} className="sliderImg" />
+                  <img src={sliderImg} className="sliderImg" />
                 </div>
 
                 <FontAwesomeIcon
@@ -134,16 +143,18 @@ export default function Hotel() {
               free airport taxi
             </span>
             <div className="hotelImages">
-              {data.photos?.map((photo, i) => (
-                <div className="hotelImgWrapper" key={i}>
-                  <img
-                    onClick={() => handleOpen(i)}
-                    src={photo}
-                    alt="This is an image"
-                    className="hotelImg"
-                  />
-                </div>
-              ))}
+              {data.photos?.map((photo, i) => {
+                return (
+                  <div className="hotelImgWrapper" key={i}>
+                    <img
+                      onClick={() => handleOpen(i, photo)}
+                      src={photoDatatToLink(photo.data)}
+                      alt="This is an image"
+                      className="hotelImg"
+                    />
+                  </div>
+                );
+              })}
             </div>
             <div className="hotelDetails">
               <div className="hotelDetailsTexts">

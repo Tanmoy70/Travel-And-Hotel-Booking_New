@@ -40,7 +40,7 @@ export default function Questions() {
   };
 
   return (
-    <div className="questions section container">
+    <div className="questions section container" id="questions">
       <div className="secHeading">
         <h3 data-aos="fade-up">Frequently Asked Quesyions</h3>
       </div>
@@ -93,7 +93,7 @@ export default function Questions() {
                 data-aos="fade-up"
                 name="massage"
               />
-              <button className="btn" data-aos="fade-up">
+              <button className="btnNormal" data-aos="fade-up">
                 {" "}
                 Submit Inquiry
               </button>

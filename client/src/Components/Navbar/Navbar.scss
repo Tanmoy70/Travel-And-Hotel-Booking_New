@@ -5,7 +5,7 @@
 :root {
   --primaryColor: hsl(14, 90%, 53%);
   --primaryColorlight: hsl(14, 96%, 91%);
-  --bgColor: hsl(0, 0%, 100%);
+  --bgColor: hsla(0, 0%, 100%, 0.342);
   --formColor: hsl(20, 42%, 87%);
   --whiteColor: hsl(0, 0%, 100%);
   --blackColor: hsl(0, 0%, 18%);
@@ -25,7 +25,7 @@
   --borderRedius: 3rem;
 }
 
-.navBar {
+.navBar2 {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -78,7 +78,6 @@
 
         &:hover {
           color: var(--primaryColor);
-          border-bottom: 1.5px solid var(--primaryColor);
         }
       }
     }
@@ -122,10 +121,11 @@
 //Media queires
 
 @media screen and (min-width: 768px) {
-  .navBar {
+  .navBar2 {
     .logoDiv {
       span {
         font-size: var(--h2FontSize);
+        font-weight: bold;
       }
     }
 
@@ -145,8 +145,14 @@
           padding: 1rem 0;
           text-align: center;
           cursor: pointer;
-
+          a {
+            color: black;
+            text-decoration: none;
+          }
           &:hover {
+            a {
+              color: var(--primaryColor);
+            }
             color: var(--primaryColor);
             border-bottom: 1.5px solid var(--primaryColor);
           }
@@ -157,7 +163,7 @@
 }
 
 @media screen and (min-width: 1240px) {
-  .navBar {
+  .navBar2 {
     padding: 2rem 6rem;
     .menu {
       ul {
@@ -168,7 +174,7 @@
 }
 
 @media screen and (min-width: 1440px) {
-  .navBar {
+  .navBar2 {
     padding: 2rem 14rem;
   }
 }

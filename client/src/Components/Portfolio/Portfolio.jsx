@@ -19,7 +19,7 @@ export default function Portfolio() {
   }, []);
 
   return (
-    <div className="portfolio section container">
+    <div className="portfolio section container" id="portfolio">
       <div className="secContainer grid">
         <div className="leftContent">
           <div className="secHeading">

@@ -1,5 +1,5 @@
 import useFetch from "../../hooks/usefetch.js";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import "./List.scss";
 import Navbar from "../../Components/NavBarSecond/NavBarSecond";
@@ -9,10 +9,15 @@ import { format } from "date-fns";
 import { DateRange } from "react-date-range";
 import SearchItem from "../../Components/SeachItems/SearchItem";
 
+import Aos from "aos";
+import "aos/dist/aos.css";
+
 export default function List() {
   const location = useLocation();
 
-  console.log(location);
+  useEffect(() => {
+    Aos.init({ duration: 2000 });
+  }, []);
 
   const [Destinations, setDestinations] = useState(location.state.Destinations);
   const [dates, setDates] = useState(location.state.dates);
@@ -36,10 +41,12 @@ export default function List() {
       <Navbar />
       <Header type="list" />
       <div className="listContainer">
-        <div className="listWrapper">
+        <div className="listWrapper" data-aos="fade-up">
           <div className="listSearch">
-            <h1 className="lsTitle">Search</h1>
-            <div className="lsItem">
+            <h1 className="lsTitle" data-aos="fade-up">
+              Search
+            </h1>
+            <div className="lsItem" data-aos="fade-up">
               <label>Destination</label>
               <input
                 placeholder={Destinations}
@@ -47,7 +54,7 @@ export default function List() {
                 type="text"
               />
             </div>
-            <div className="lsItem">
+            <div className="lsItem" data-aos="fade-up">
               <label>Check-in Date</label>
               <span onClick={() => setOpenDate(!openDate)}>{`${format(
                 dates[0].startDate,
@@ -61,7 +68,7 @@ export default function List() {
                 />
               )}
             </div>
-            <div className="lsItem">
+            <div className="lsItem" data-aos="fade-up">
               <label>Options</label>
               <div className="lsOption">
                 <div className="lsOptionItem">
@@ -69,42 +76,47 @@ export default function List() {
                     Min price <small>per night</small>
                   </span>
                   <input
+                    data-aos="fade-up"
                     type="number"
                     onChange={(e) => setMin(e.target.value)}
                     className="inOptionInput"
                   />
                 </div>
-                <div className="lsOptionItem">
+                <div className="lsOptionItem" data-aos="fade-up">
                   <span className="IsOptionText">
                     Max price <small>per night</small>
                   </span>
                   <input
+                    data-aos="fade-up"
                     type="number"
                     onChange={(e) => setMax(e.target.value)}
                     className="inOptionInput"
                   />
                 </div>
-                <div className="lsOptionItem">
+                <div className="lsOptionItem" data-aos="fade-up">
                   <span className="IsOptionText">Adult</span>
                   <input
+                    data-aos="fade-up"
                     type="number"
                     className="inOptionInput"
                     placeholder={option.adult}
                     min={1}
                   />
                 </div>
-                <div className="lsOptionItem">
+                <div className="lsOptionItem" data-aos="fade-up">
                   <span className="IsOptionText">Children</span>
                   <input
+                    data-aos="fade-up"
                     type="number"
                     className="inOptionInput"
                     placeholder={option.children}
                     min={0}
                   />
                 </div>
-                <div className="lsOptionItem">
+                <div className="lsOptionItem" data-aos="fade-up">
                   <span className="IsOptionText">Room</span>
                   <input
+                    data-aos="fade-up"
                     type="number"
                     className="inOptionInput"
                     placeholder={option.room}
@@ -113,13 +125,17 @@ export default function List() {
                 </div>
               </div>
             </div>
-            <button className="listBtn" onClick={handleClick}>
+            <button
+              className="listBtn"
+              onClick={handleClick}
+              data-aos="fade-up"
+            >
               Search
             </button>
           </div>
-          <div className="listResult">
+          <div className="listResult" data-aos="fade-up">
             {loading ? (
-              "Loading"
+              "Loading..."
             ) : (
               <>
                 {data.map((item, index) => {

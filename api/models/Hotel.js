@@ -34,7 +34,7 @@ const HotelSchema = new mongoose.Schema({
   rating: {
     type: Number,
     min: 0,
-    max: 9,
+    max: 9.9,
   },
   rooms: {
     type: [String],

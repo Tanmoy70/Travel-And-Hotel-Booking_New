@@ -137,7 +137,7 @@ export default function Destinations() {
   const {} = useContext(SearchContext);
 
   return (
-    <div className="destination section container">
+    <div className="destination section container" id="destination">
       <div className="secCotainer">
         <div className="secTitle">
           <span className="redText" data-aos="fade-up">
@@ -246,7 +246,7 @@ export default function Destinations() {
             </div>
           )}
           <button
-            className="btn flex"
+            className="btnNormal flex"
             data-aos="fade-up"
             onClick={handleSearch}
           >

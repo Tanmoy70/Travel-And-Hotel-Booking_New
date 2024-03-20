@@ -49,7 +49,23 @@ export const deleteHotel = async (req, res, next) => {
 export const getHotel = async (req, res, next) => {
   try {
     const hotel = await Hotel.findById(req.params.id);
-    res.status(200).json(hotel);
+    const photoData = [];
+    const uploadFolder = path.join(process.cwd(), "uploads");
+    for (let i = 0; i < hotel.photos.length; i++) {
+      photoData.push(fs.readFileSync(path.join(uploadFolder, hotel.photos[i])));
+    }
+    hotel.photos = photoData;
+    const dataToBesend = {
+      _id: hotel._id,
+      name: hotel.name,
+      photos: photoData,
+      desc: hotel.desc,
+      title: hotel.title,
+      cheapestPrice: hotel.cheapestPrice,
+      distance: hotel.distance,
+      address: hotel.address,
+    };
+    res.status(200).send(dataToBesend); //yttttttttttttttttttttttttttttttttttttttt
   } catch (err) {
     next(err);
   }
@@ -79,6 +95,7 @@ export const getHotels = async (req, res, next) => {
       }
 
       dataTobeSend.push({
+        _id: rawHotelData[i]._id,
         name: rawHotelData[i].name,
         type: rawHotelData[i].type,
         city: rawHotelData[i].city,

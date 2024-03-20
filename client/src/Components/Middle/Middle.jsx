@@ -16,15 +16,15 @@ export default function Middle() {
       <div className="secContainer container">
         <div className="grid">
           <span className="flex" data-aos="fade-up">
-            <h1>10</h1>
+            <h1>15</h1>
             <p>World of Experience</p>
           </span>
           <span className="flex" data-aos="fade-up">
-            <h1>2K+</h1>
+            <h1>5K+</h1>
             <p>Fine Destinations</p>
           </span>
           <span className="flex" data-aos="fade-up">
-            <h1>10K+</h1>
+            <h1>20K+</h1>
             <p>Customer Reviews</p>
           </span>
           <span className="flex" data-aos="fade-up">
